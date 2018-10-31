@@ -1,0 +1,31 @@
+<form [formGroup]="topicForm"
+      novalidate>
+  <div class="form-group">
+    <label for="title">Topic Title</label>
+    <input type="text"
+           class="form-control"
+           id="title"
+           formControlName="title"
+           placeholder="Enter topic title">
+    <p class="validation-error"
+       *ngIf="topicForm.controls.title.errors?.required"></p>
+  </div>
+  <div class="form-group">
+    <label for="title">Topic Description</label>
+    <input type="text"
+           class="form-control"
+           id="description"
+           formControlName="description"
+           placeholder="Enter topic description">
+    <p class="validation-error"
+       *ngIf="topicForm.controls.description.errors?.required"></p>
+  </div>
+  <button class="btn btn-secondary mr-3"
+          (click)="closeDialog()">Cancel
+  </button>
+  <button class="btn btn-primary"
+          type="submit"
+          [disabled]="topicForm.invalid"
+          (click)="onTopicFormFormSubmit()">Submit
+  </button>
+</form>

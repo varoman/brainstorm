@@ -1,0 +1,32 @@
+<div class="mesgs">
+  <div class="msg_history">
+    <div *ngFor="let message of messages">
+      <div class="incoming_msg" *ngIf="message.author.name !== 'you'">
+        <div class="received_msg">
+          <div class="received_withd_msg">
+            <p>{{ message.content }}</p>
+            <span class="time_date">{{ message.created | date: 'medium' }}</span></div>
+        </div>
+      </div>
+      <div class="outgoing_msg" *ngIf="message.author.name === 'you'">
+        <div class="sent_msg">
+          <p>{{ message.content }}</p>
+          <span class="time_date"> {{ message.created | date: 'medium' }}</span></div>
+      </div>
+    </div>
+  </div>
+  <form (submit)="onMessageSubmit()">
+    <div class="type_msg">
+      <div class="input_msg_write">
+        <input type="text"
+               class="write_msg"
+               name="content"
+               [(ngModel)]="message.content"
+               placeholder="Type a message"/>
+        <button class="msg_send_btn"
+                type="submit"><i class="fab fa-telegram-plane"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
