@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddTopicModalComponent } from './add-topic-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AddTopicModalComponent', () => {
   let component: AddTopicModalComponent;
@@ -8,7 +11,9 @@ describe('AddTopicModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddTopicModalComponent ]
+      imports: [ReactiveFormsModule, HttpClientTestingModule],
+      declarations: [ AddTopicModalComponent ],
+      providers: [{ provide: MatDialogRef, useValue: {} }]
     })
     .compileComponents();
   }));
